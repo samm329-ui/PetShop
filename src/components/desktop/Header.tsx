@@ -29,7 +29,7 @@ export default function Header() {
                 : 'bg-transparent py-5'
                 }`}
         >
-            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between">
+            <div className="max-w-7xl mx-auto px-6 flex items-center justify-between" style={{ height: '43.2px' }}>
                 {/* Logo */}
                 <a href="#hero" className="flex items-center gap-2 group">
                     <span className="text-3xl group-hover:animate-paw-bounce">🐾</span>
@@ -66,7 +66,7 @@ export default function Header() {
                             : 'bg-white/15 hover:bg-white/25 text-white'
                             }`}
                         aria-label="Open cart"
-                        style={{ width: '16.56px', height: '25.7px', left: '-22px', top: '-1px' }}
+                        style={{ width: '22.15px', height: '25.7px', left: '-22px', top: '-1px', transform: 'translate(-5.6px, 0px)', transition: 'none' }}
                     >
                         <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                             style={{ width: '26.79px', height: '29.25px', transform: 'translate(-7.21px, 0px)', position: 'relative' }}
@@ -90,7 +90,7 @@ export default function Header() {
                             ? 'bg-primary text-white hover:bg-primary-dark hover:shadow-lg'
                             : 'bg-white/20 backdrop-blur-sm text-white border border-white/30 hover:bg-white/30'
                             }`}
-                        style={{ transform: 'translate(-1.6px, -3.2px)' }}
+                        style={{ transform: 'translate(-1.6px, -3.2px)', whiteSpace: 'nowrap', transition: 'none' }}
                     >
                         <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"
                             style={{ width: '24.73px', height: '15.08px' }}

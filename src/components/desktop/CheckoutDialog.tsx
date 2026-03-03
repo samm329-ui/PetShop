@@ -142,12 +142,11 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
                     </div>
                 )}
 
-                <div className="flex-1 overflow-y-auto p-8">
+                <div className="flex-1 overflow-y-auto overflow-x-hidden p-8">
                     {/* ===== Step: Review ===== */}
                     {step === 'review' && (
                         <div className="space-y-5">
-                            <h3 className="font-heading font-semibold text-sm text-muted uppercase tracking-wider"
-                                style={{ position: 'relative', left: '3px' }}>Items in Cart</h3>
+                            <h3 className="font-heading font-semibold text-sm text-muted uppercase tracking-wider">Items in Cart</h3>
                             {items.map(item => (
                                 <div key={item.pet.id} className="flex items-center gap-4 p-5 bg-cream rounded-2xl"
                                     style={{ height: '68px' }}>
@@ -158,23 +157,22 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
                                         <p className="font-heading font-semibold text-sm truncate">{item.pet.name} ({item.pet.breed})</p>
                                         <p className="text-xs text-muted mt-0.5">Qty: {item.quantity} • {item.deliveryMethod}</p>
                                     </div>
-                                    <p className="font-heading font-bold text-primary whitespace-nowrap"
-                                        style={{ position: 'relative', left: '-17px', top: '-3px' }}>₹{(item.pet.price * item.quantity).toLocaleString()}</p>
+                                    <p className="font-heading font-bold text-primary whitespace-nowrap">₹{(item.pet.price * item.quantity).toLocaleString()}</p>
                                 </div>
                             ))}
 
                             <div className="space-y-2 bg-cream rounded-2xl p-6 mt-4">
                                 <div className="flex justify-between text-sm">
-                                    <span className="text-muted" style={{ transform: 'translate(5.36px, 0px)' }}>Subtotal</span>
-                                    <span style={{ position: 'relative', left: '-21px', top: '-3px' }}>₹{subtotal.toLocaleString()}</span>
+                                    <span className="text-muted">Subtotal</span>
+                                    <span>₹{subtotal.toLocaleString()}</span>
                                 </div>
-                                <div className="flex justify-between text-sm" style={{ transform: 'translate(5.12px, 0px)' }}>
+                                <div className="flex justify-between text-sm">
                                     <span className="text-muted">Delivery</span>
-                                    <span style={{ position: 'relative', left: '-33px' }}>{deliveryCharge > 0 ? `₹${deliveryCharge}` : 'Free'}</span>
+                                    <span>{deliveryCharge > 0 ? `₹${deliveryCharge}` : 'Free'}</span>
                                 </div>
-                                <div className="flex justify-between text-base font-bold border-t border-gray-200 pt-3 mt-2" style={{ transform: 'translate(15.2px, 0px)' }}>
-                                    <span style={{ position: 'relative', left: '-8px', top: '1px' }}>Total</span>
-                                    <span className="text-primary text-lg" style={{ position: 'relative', left: '-6px', top: '-2px' }}>₹{total.toLocaleString()}</span>
+                                <div className="flex justify-between text-base font-bold border-t border-gray-200 pt-3 mt-2">
+                                    <span>Total</span>
+                                    <span className="text-primary text-lg">₹{total.toLocaleString()}</span>
                                 </div>
                             </div>
                         </div>
@@ -184,8 +182,7 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
                     {step === 'address' && (
                         <div className="animate-fade-in">
                             <p className="text-sm text-muted mb-6">Please fill in your delivery details. All fields marked with <span className="text-red-500">*</span> are required.</p>
-                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5"
-                                style={{ transform: 'translate(4.8px, 0px)' }}>
+                            <div className="grid grid-cols-1 sm:grid-cols-2 gap-x-4 gap-y-5">
                                 {/* First Name */}
                                 <div>
                                     <label className="block text-sm font-semibold text-charcoal mb-1.5">First Name <span className="text-red-500">*</span></label>
@@ -307,14 +304,14 @@ export default function CheckoutDialog({ isOpen, onClose }: Props) {
 
                     {/* ===== Step: Payment ===== */}
                     {step === 'payment' && paymentMethod === 'upi' && (
-                        <div className="flex flex-col items-center text-center py-8 animate-fade-in">
+                        <div className="flex flex-col items-center text-center py-8 animate-fade-in" style={{ maxWidth: '480px', margin: '0 auto' }}>
                             <h3 className="font-heading text-xl font-bold mb-2">Scan to Pay</h3>
-                            <p className="text-muted text-sm mb-8">Scan the QR code with any UPI app to complete payment</p>
-                            <div className="bg-white p-5 rounded-2xl shadow-lg mb-6">
-                                <canvas ref={canvasRef} />
+                            <p className="text-muted text-sm mb-6">Scan the QR code with any UPI app to complete payment</p>
+                            <div className="bg-white p-5 rounded-2xl shadow-lg mb-4 flex items-center justify-center">
+                                <canvas ref={canvasRef} style={{ width: '240px', height: '240px', maxWidth: 'none' }} />
                             </div>
-                            <p className="font-heading text-3xl font-bold text-primary mb-2">₹{total.toLocaleString()}</p>
-                            <p className="text-xs text-muted mb-8">UPI ID: happypets@upi</p>
+                            <p className="font-heading text-3xl font-bold text-primary mb-1">₹{total.toLocaleString()}</p>
+                            <p className="text-xs text-muted mb-6">UPI ID: happypets@upi</p>
 
                             {/* Show delivery summary */}
                             <div className="bg-cream rounded-2xl p-4 mb-6 text-left w-full max-w-sm">
